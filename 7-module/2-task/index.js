@@ -37,13 +37,20 @@ export default class Modal {
   open() {
     document.body.className = 'is-modal-open';
     document.body.append(this.elem);
+    this.modalWindow = document.body.querySelector('.modal');
     document.addEventListener('keydown', this.close);
   }
   close = (event) => {
-    if (event.type == 'click' || event.code == 'Escape') {
-      document.body.querySelector('.modal').remove();
-      document.body.removeAttribute('class');
+    if (!event) {
+      this.modalWindow.remove();
+      document.body.classList.remove('is-modal-open');
       document.removeEventListener('keydown', this.close);
+    } else {
+      if (event.type == 'click' || event.code == 'Escape') {
+        this.modalWindow.remove();
+        document.body.removeAttribute('class');
+        document.removeEventListener('keydown', this.close);
+      }
     }
   }
 }
