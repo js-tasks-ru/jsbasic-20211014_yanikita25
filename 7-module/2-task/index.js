@@ -41,16 +41,10 @@ export default class Modal {
     document.addEventListener('keydown', this.close);
   }
   close = (event) => {
-    if (!event) {
-      this.modalWindow.remove();
-      document.body.classList.remove('is-modal-open');
-      document.removeEventListener('keydown', this.close);
-    } else {
-      if (event.type == 'click' || event.code == 'Escape') {
+      if (!event || event.type == 'click' || event.code == 'Escape') {
         this.modalWindow.remove();
         document.body.removeAttribute('class');
         document.removeEventListener('keydown', this.close);
       }
-    }
   }
 }
