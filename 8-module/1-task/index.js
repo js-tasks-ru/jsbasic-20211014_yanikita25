@@ -41,7 +41,6 @@ export default class CartIcon {
   }
 
   updatePosition() {
-    console.log(this.cartTopEdgePosition);
     this.leftMargin = Math.min(
       this.mainContainer.getBoundingClientRect().right + 20,
       document.documentElement.clientWidth - this.elem.offsetWidth - 10
